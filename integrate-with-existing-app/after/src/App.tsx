@@ -39,7 +39,7 @@ const App = () => {
   };
 
   const renderApp = () => {
-    const APP_ID = 'YOUR_APP_ID'; // TODO Reapcle 'YOUR_APP_ID' with the actual Sendbird application ID
+    const APP_ID = 'YOUR_APP_ID'; // TODO Replace 'YOUR_APP_ID' with the actual Sendbird application ID
     return (
       <div className="app-container">
         <SendbirdProvider appId={APP_ID} userId={userId}>

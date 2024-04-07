@@ -1,30 +1,15 @@
-# React + TypeScript + Vite
+# Integrate UIKit with an existing app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This folder contains the code before integrating the Sendbird UIKit with an existing app.
+Update the code following the steps in the [tutorial page](https://sendbird.com/docs/chat/uikit/v3/react/tutorial/integrate-with-existing-app).
 
-Currently, two official plugins are available:
+**Please be cautious that you should replace `YOUR_APP_ID` with your actual Sendbird application ID,
+and the `YOUR_DELIVERY_PERSON_ID` ID with the actual delivery person ID.**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+# Setup
+This project was bootstrapped with Vite.
+You can start the project by running the following commands:
+```bash
+npm install
+npm run dev
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
