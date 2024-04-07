@@ -1,35 +1,62 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, {useState} from 'react';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+const orderDetails = {
+    orderNumber: 'Food Delivery Order #12345',
+    items: ['Pizza', 'Coke'],
+    status: 'In transit',
+    deliveryPersonId: 'delivery',
+};
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+type OrderStatusProps = { orderDetails: typeof orderDetails };
+const OrderStatus = ({orderDetails, children}: React.PropsWithChildren<OrderStatusProps>) => {
+    return (
+        <div className="order-container">
+            <div className="order-body">
+                <div className="order-number">{orderDetails.orderNumber}</div>
+                <div className="order-details">
+                    <p>Details:</p>
+                    <ul>
+                        {orderDetails.items.map((item, index) => (
+                            <li key={index}>{item}</li>
+                        ))}
+                    </ul>
+                </div>
+                <div className="order-status">Status: {orderDetails.status}</div>
+                {children}
+            </div>
+        </div>
+    );
+};
 
-export default App
+const App = () => {
+    const [userId, setUserId] = useState('');
+    const [showLogin, setShowLogin] = useState(true);
+
+    const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (userId.trim()) setShowLogin(false);
+    };
+
+    const renderLoginForm = () => {
+        return (
+            <form className={'login-form'} onSubmit={handleLogin}>
+                <input type="text" placeholder="Enter your user ID" value={userId}
+                       onChange={(e) => setUserId(e.target.value)}/>
+                <button type="submit">Login</button>
+            </form>
+        );
+    };
+
+    const renderApp = () => {
+        return (
+            <div className="app-container">
+                <OrderStatus orderDetails={orderDetails}></OrderStatus>
+            </div>
+        );
+    };
+
+    return <div className="App">{showLogin ? renderLoginForm() : renderApp()}</div>;
+};
+
+export default App;
