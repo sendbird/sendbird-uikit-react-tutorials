@@ -5,7 +5,7 @@ const orderDetails = {
     orderNumber: 'Food Delivery Order #12345',
     items: ['Pizza', 'Coke'],
     status: 'In transit',
-    deliveryPersonId: 'delivery',
+    deliveryPersonId: 'YOUR_DELIVERY_PERSON_ID', // TODO Replace 'YOUR_DELIVERY_PERSON_ID' with the actual delivery person's user ID
 };
 
 type OrderStatusProps = { orderDetails: typeof orderDetails };
